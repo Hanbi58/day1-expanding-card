@@ -1,16 +1,48 @@
-const cont = document.querySelector(".container");
+// const cont = document.querySelector(".container");
 
-cont.addEventListener("click", function (e) {
-  const target = e.target;
+// cont.addEventListener("click", function (e) {
+//   const target = e.target;
 
-  const divs = document.querySelectorAll(".panel");
+//   const divs = document.querySelectorAll(".panel");
 
-  for (dv of divs) {
-    if (dv === target) {
-      continue;
+//   for (dv of divs) {
+//     if (dv === target) {
+//       continue;
+//     }
+//     dv.classList.remove("active");
+//   }
+
+//   target.classList.toggle("active");
+// });
+
+//Teacher's version
+//The class active does not remove, upon 2nd click on the same panel. Using delegation could be the way to resolve.
+// const panels = document.querySelectorAll(".panel");
+
+// panels.forEach((panel) => {
+//   panel.addEventListener("click", () => {
+//     removeActiveClass();
+//     panel.classList.add("active");
+//   });
+// });
+
+// function removeActiveClass() {
+//   panels.forEach((panel) => {
+//     panel.classList.remove("active");
+//   });
+// }
+
+//Final Version.
+const panels = document.querySelectorAll(".panel");
+
+panels.forEach((panel) => {
+  panel.addEventListener("click", function () {
+    for (panel of panels) {
+      if (panel === this) {
+        this.classList.toggle("active");
+      } else {
+        panel.classList.remove("active");
+      }
     }
-    dv.classList.remove("active");
-  }
-
-  target.classList.toggle("active");
+  });
 });
