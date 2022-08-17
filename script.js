@@ -32,17 +32,15 @@
 //   });
 // }
 
-//Final Version.
+//Final Version.OMG, callback hell?
 const panels = document.querySelectorAll(".panel");
 
 panels.forEach((panel) => {
   panel.addEventListener("click", function () {
     for (panel of panels) {
-      if (panel === this) {
-        this.classList.toggle("active");
-      } else {
-        panel.classList.remove("active");
-      }
+      panel === this
+        ? this.classList.toggle("active")
+        : panel.classList.remove("active");
     }
   });
 });
